@@ -1,0 +1,9 @@
+<resources>
+
+    <!-- 沉浸主题 -->
+    <style name="ImmersiveTheme" parent="MyAppTheme">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+
+</resources>

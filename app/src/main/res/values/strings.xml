@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">RNGNB</string>
+
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="logout">退出登录</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Hot</string>
+    <string name="title_notifications">Me</string>
+
+    <string name="exit_app">再按一次退出程序</string>
+</resources>

@@ -1,0 +1,60 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+
+    ext{
+        versions = [
+                'javaVersion'           : JavaVersion.VERSION_1_8, // JDK版本
+
+                'minSdk'                : 18, // 最低版本
+                'compileSdk'            : 28, // 编译版本
+                'targetSdk'             : 28, // 目标版本
+
+                'androidPlugin'         : '3.1.2', // Android Gradle版本
+                'buildTools'            : '28.0.0', // 编译工具版本
+                'supportLibrary'        : '28.0.0', // Android Support包版本
+
+                'majorNumber'           : 1, // 大版本号
+                'minorNumber'           : 0, // 小版本号
+                'revisionNumberCMD'     : 'git rev-list HEAD --count', // 提交次数命令
+                'revisionDescriptionCMD': 'git describe --always', // 提交记录命令
+        ]
+        // 获取 git 提交次数
+        try {
+            revisionNumber = versions.revisionNumberCMD.execute().getText().trim().toInteger()
+        } catch (Exception ignore) {
+            revisionNumber = 1
+        }
+        // 获取最后一次 git 记录码
+        try {
+            revisionDescription = versions.revisionDescriptionCMD.execute().getText().trim()
+        } catch (Exception ignore) {
+            revisionDescription = "1"
+        }
+        // 版本号
+        verCode = versions.majorNumber * 1000000 + versions.minorNumber * 10000 + revisionNumber
+        // 版本名(大版本.小版本.提交次数.提交记录码)
+        verName = versions.majorNumber + "." + versions.minorNumber + "." + revisionNumber + "." + revisionDescription
+    }
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:3.2.1"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
