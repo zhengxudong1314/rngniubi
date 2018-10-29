@@ -1,5 +1,13 @@
 apply plugin: 'com.android.application'
 android {
+    signingConfigs {
+        release {
+            keyAlias 'rngnb'
+            keyPassword '111222'
+            storeFile file('rngnb.jks')
+            storePassword '111222'
+        }
+    }
     compileSdkVersion versions.compileSdk
     defaultConfig {
         applicationId "com.zxd.rngnb"
@@ -10,10 +18,34 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+
     buildTypes {
         release {
             minifyEnabled false //是否启动混淆
+//            zipAlignEnabled true //是否移除无用资源
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //混淆的配置文件
+            signingConfig signingConfigs.release
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    flavorDimensions "default"
+    productFlavors {
+        rngnb {
+
+        }
+        xiaomi {
+
+        }
+        wandoujia {
+
+        }
+        qh360 {
+
         }
     }
     android.applicationVariants.all { variant ->
@@ -57,10 +89,8 @@ dependencies {
     implementation project(':pagelayout')
     //腾讯文字识别
     implementation 'com.qcloud:qcloud-image-sdk:2.3.2'
-
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
     //FlexboxLayout
     implementation 'com.google.android:flexbox:1.0.0'
-
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42'
 }
