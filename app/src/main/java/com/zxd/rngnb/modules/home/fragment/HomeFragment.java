@@ -27,6 +27,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IHomVie
     @Override
     protected void doSomething() {
         //first commit
+        //sencond commit
     }
 
     @Override
