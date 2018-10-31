@@ -17,12 +17,15 @@ import com.zxd.rngnb.modules.home.view.IHomView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+
 /**
  * 创建： ZXD
  * 日期 2018/10/23
  * 功能：
  */
 public class HotFragment extends BaseFragment<HomePresenter> implements IHomView {
+    @BindView(R.id.rv)
     RecyclerView rv;
 
     @Override
@@ -32,7 +35,6 @@ public class HotFragment extends BaseFragment<HomePresenter> implements IHomView
 
     @Override
     protected void doSomething() {
-        rv = (RecyclerView) getActivity().findViewById(R.id.rv);
         final List<String> list = new ArrayList<>();
         list.add("大流氓苏仨");
         list.add("冯提莫的小粉丝");

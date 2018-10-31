@@ -33,7 +33,7 @@ buildscript {
         // 版本号
         verCode = versions.majorNumber * 1000000 + versions.minorNumber * 10000 + revisionNumber
         // 版本名(大版本.小版本.提交次数.提交记录码)
-        verName = versions.majorNumber + "." + versions.minorNumber + "." + revisionNumber + "." + revisionDescription
+        verName = versions.majorNumber + "." + versions.minorNumber + "." + revisionNumber// + "." + revisionDescription
     }
 
     repositories {
